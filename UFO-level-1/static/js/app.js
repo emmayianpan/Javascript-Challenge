@@ -16,9 +16,10 @@ function ufoTable(data) {
 }
 
 // Select the button
-var button = d3.select("#filter-btn");
+//var button = d3.select("#filter-btn");
 // Create event handlers 
-button.on("click", runEnter);
+//button.on("click", runEnter);
+d3.selectAll("#filter-btn").on("click", runEnter);
 
 // Create a function to filter data to the table 
 function runEnter() {
@@ -43,4 +44,4 @@ function runEnter() {
     
 }
 
-//console.log(ufoTable(tableData)); 
+ufoTable(data); 
