@@ -6,6 +6,7 @@ var tbody = d3.select("tbody");
 
 // Create a function to append data to the table 
 function ufoTable(data) {
+    var clear = tbody.html(""); 
     data.forEach((UFO_report) => {
         var row = tbody.append("tr");
         Object.entries(UFO_report).forEach(([key, value]) => {
@@ -15,11 +16,8 @@ function ufoTable(data) {
     });  
 }
 
-// Select the button
-//var button = d3.select("#filter-btn");
-// Create event handlers 
-//button.on("click", runEnter);
-d3.selectAll("#filter-btn").on("click", runEnter);
+// Select the button and create event handlers
+var submit = d3.select("#filter-btn").on("click", runEnter);
 
 // Create a function to filter data to the table 
 function runEnter() {
@@ -29,18 +27,9 @@ function runEnter() {
     var inputElement = d3.select("#datetime");  
     // Get the value property of the input element
     var inputValue = inputElement.property("value");
-  
-    //console.log(inputValue);
-    //console.log(tableData);
-
-    //if else statement to show data to the table 
-    if (inputValue){
-        var filteredData = tableData.filter(ufo => ufo.datetime === inputValue);
-        console.log(ufoTable(filteredData)); 
-    }
-        else{
-        console.log(ufoTable(tableData)); 
-    }
+    var filteredData = tableData.filter(ufo => ufo.datetime == inputValue);
+    console.log(filteredData); 
+    ufoTable(filteredData); 
     
 }
 
